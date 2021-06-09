@@ -1,7 +1,10 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import { connect } from "react-redux";
+import "./App.css";
+import { decreaseCounter, increaseCounter } from "./actions";
 
-function App() {
+function App(props) {
+  console.log(props);
   return (
     <div className="App">
       <header className="App-header">
@@ -22,4 +25,17 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    counter: state.counter,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    increment: (value) => dispatch(increaseCounter(value)),
+    decrement: (value) => dispatch(decreaseCounter(value)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
