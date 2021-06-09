@@ -3,15 +3,14 @@ import { connect } from "react-redux";
 import "./App.css";
 import { decreaseCounter, increaseCounter } from "./actions";
 
-function App(props) {
-  console.log(props);
+function App({ counter, increment, decrement }) {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+        <p>{counter}</p>
+        <button onClick={() => increment()}>+</button>
+        <button onClick={() => decrement()}>-</button>
         <a
           className="App-link"
           href="https://reactjs.org"
