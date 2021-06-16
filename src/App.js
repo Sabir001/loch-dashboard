@@ -1,9 +1,15 @@
-import logo from "./logo.svg";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { decreaseCounter, fetchUser, increaseCounter } from "./actions";
 import "./App.css";
-import { decreaseCounter, increaseCounter } from "./actions";
+import logo from "./logo.svg";
 
-function App({ counter, increment, decrement }) {
+function App({ counter, todos, increment, decrement, fetchUser }) {
+  useEffect(() => {
+    fetchUser();
+  }, [fetchUser]);
+
+  console.log(todos);
   return (
     <div className="App">
       <header className="App-header">
@@ -27,6 +33,7 @@ function App({ counter, increment, decrement }) {
 const mapStateToProps = (state) => {
   return {
     counter: state.counter,
+    todos: state.todos,
   };
 };
 
@@ -34,6 +41,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     increment: (value) => dispatch(increaseCounter(value)),
     decrement: (value) => dispatch(decreaseCounter(value)),
+    fetchUser: () => dispatch(fetchUser()),
   };
 };
 
