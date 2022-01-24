@@ -5,6 +5,8 @@ import {
   FAILURE,
 } from "../actions/DealsAction";
 
+import { SIGNED_OUT } from "../actions/index";
+
 const initialState = {
   counter: 0,
   todos: undefined,
@@ -22,6 +24,8 @@ export default function todoReducer(state = initialState, action) {
     case FAILURE: {
       return { ...state, todos: undefined };
     }
+    case SIGNED_OUT:
+      return { ...initialState };
     default:
       return state;
   }

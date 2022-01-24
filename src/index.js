@@ -3,7 +3,6 @@ import { createBrowserHistory } from "history";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider, ReactReduxContext } from "react-redux";
-import { Route, Switch } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
 import App from "./App";
 import { persistor, store } from "./createStore";
@@ -17,9 +16,7 @@ ReactDOM.render(
     <Provider store={store} context={ReactReduxContext}>
       <PersistGate loading={null} persistor={persistor}>
         <ConnectedRouter history={hist} context={ReactReduxContext}>
-          <Switch>
-            <Route exact path="/" component={App} />
-          </Switch>
+          <App />
         </ConnectedRouter>
       </PersistGate>
     </Provider>

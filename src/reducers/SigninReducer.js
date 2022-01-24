@@ -1,27 +1,34 @@
 import {
-  DECREMENT_COUNTER,
-  INCREMENT_COUNTER,
-  SUCCESS,
-  FAILURE,
-} from "../actions/DealsAction";
+  SIGN_IN,
+  SIGN_IN_SUCCESS,
+  SIGN_IN_FAILURE,
+} from "../actions/SigninAction";
+import { clearUserLocalStorage } from "../utils/helper";
 
 const initialState = {
-  counter: 0,
-  todos: undefined,
+  signin: undefined,
+  signinLoader: false,
+  signout: false,
 };
 
-export default function todoReducer(state = initialState, action) {
+export default function signinReducer(state = initialState, action) {
   switch (action.type) {
-    case INCREMENT_COUNTER:
-      return { ...state, counter: state.counter + action.incrementValue };
-    case DECREMENT_COUNTER:
-      return { ...state, counter: state.counter - action.decrementValue };
-    case SUCCESS: {
-      return { ...state, todos: action?.response?.data };
+    case SIGN_IN:
+      return { ...state, signinLoader: true };
+    case SIGN_IN_SUCCESS:
+      clearUserLocalStorage();
+      localStorage.setItem("user_info", JSON.stringify(action.response.data));
+      return { ...state, signinLoader: false, signin: action.response };
+    case SIGN_IN_FAILURE: {
+      clearUserLocalStorage();
+      return {
+        ...state,
+        signinLoader: false,
+        signin: action.response,
+        signout: true,
+      };
     }
-    case FAILURE: {
-      return { ...state, todos: undefined };
-    }
+
     default:
       return state;
   }

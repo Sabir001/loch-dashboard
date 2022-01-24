@@ -2,7 +2,7 @@ import { connectRouter } from "connected-react-router";
 import { combineReducers } from "redux";
 import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import todoReducer from "./reducer";
+import dealsReducer from "./DealsReducer";
 import signinReducer from "./SigninReducer";
 
 const authPersistConfig = {
@@ -15,7 +15,7 @@ const rootReducer = (history) =>
   combineReducers({
     router: connectRouter(history),
     auth: persistReducer(authPersistConfig, signinReducer),
-    todoReducer,
+    deals: dealsReducer,
   });
 
 export default rootReducer;

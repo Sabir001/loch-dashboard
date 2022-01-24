@@ -1,52 +1,19 @@
-import React, { useEffect } from "react";
-import { connect } from "react-redux";
-import {
-  decreaseCounter,
-  fetchUser,
-  increaseCounter,
-} from "./actions/DealsAction";
-import logo from "./logo.svg";
+import React from "react";
+import { Redirect, Route, Switch } from "react-router-dom";
+import AuthLayout from "./layouts/AuthLayout";
+import HomeLayout from "./layouts/HomeLayout";
 
-function App({ counter, todos, increment, decrement, fetchUser, history }) {
-  useEffect(() => {
-    fetchUser();
-    console.log(history);
-  }, [fetchUser]);
-
-  console.log(todos);
+function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>{counter}</p>
-        <button onClick={() => increment()}>+</button>
-        <button onClick={() => decrement()}>-</button>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Switch>
+        <Route path="/auth" render={(props) => <AuthLayout {...props} />} />
+        <Route path="/home" render={(props) => <HomeLayout {...props} />} />
+
+        <Redirect from="/" to="/auth/login" />
+      </Switch>
     </div>
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    counter: state.counter,
-    todos: state.todos,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    increment: (value) => dispatch(increaseCounter(value)),
-    decrement: (value) => dispatch(decreaseCounter(value)),
-    fetchUser: () => dispatch(fetchUser()),
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
