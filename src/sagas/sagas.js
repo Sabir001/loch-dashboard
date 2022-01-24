@@ -1,6 +1,6 @@
-import { call, put, takeLatest } from "redux-saga/effects";
-import { FAILURE, FETCH, SUCCESS } from "./actions";
-import { defaultApi } from "./AxiosApi";
+import { put, takeLatest } from "redux-saga/effects";
+import { FAILURE, FETCH, SUCCESS } from "../actions/DealsAction";
+import { defaultApi } from "../utils/AxiosApi";
 
 // worker Saga: will be fired on USER_FETCH_REQUESTED actions
 function* fetchUser(action) {

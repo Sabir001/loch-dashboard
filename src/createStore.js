@@ -1,13 +1,37 @@
-import { createStore, applyMiddleware } from "redux";
-import { reducer } from "./reducer";
+import { routerMiddleware } from "connected-react-router";
+import { createBrowserHistory } from "history";
+import { applyMiddleware, compose, createStore } from "redux";
+import { persistStore } from "redux-persist";
 import createSagaMiddleware from "redux-saga";
+import rootReducer from "./reducers";
+import sagas from "./sagas/sagas";
 
-import mySaga from "./sagas";
+const history = createBrowserHistory();
 
 const sagaMiddleware = createSagaMiddleware();
 
-const store = createStore(reducer, applyMiddleware(sagaMiddleware));
+export const store =
+  process.env.NODE_ENV === "development" && window.__REDUX_DEVTOOLS_EXTENSION__
+    ? createStore(
+        rootReducer(history),
+        compose(
+          applyMiddleware(
+            routerMiddleware(history), // for dispatching history actions
+            sagaMiddleware
+          ),
+          window.__REDUX_DEVTOOLS_EXTENSION__()
+        )
+      )
+    : createStore(
+        rootReducer(history),
+        compose(
+          applyMiddleware(
+            routerMiddleware(history), // for dispatching history actions
+            sagaMiddleware
+          )
+        )
+      );
 
-sagaMiddleware.run(mySaga);
+sagaMiddleware.run(sagas);
 
-export default store;
+export const persistor = persistStore(store);

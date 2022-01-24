@@ -1,12 +1,16 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { decreaseCounter, fetchUser, increaseCounter } from "./actions";
-import "./App.css";
+import {
+  decreaseCounter,
+  fetchUser,
+  increaseCounter,
+} from "./actions/DealsAction";
 import logo from "./logo.svg";
 
-function App({ counter, todos, increment, decrement, fetchUser }) {
+function App({ counter, todos, increment, decrement, fetchUser, history }) {
   useEffect(() => {
     fetchUser();
+    console.log(history);
   }, [fetchUser]);
 
   console.log(todos);
