@@ -9,6 +9,7 @@ const initialState = {
   signin: undefined,
   signinLoader: false,
   signout: false,
+  redirect: false,
 };
 
 export default function signinReducer(state = initialState, action) {
@@ -18,14 +19,22 @@ export default function signinReducer(state = initialState, action) {
     case SIGN_IN_SUCCESS:
       clearUserLocalStorage();
       localStorage.setItem("user_info", JSON.stringify(action.response.data));
-      return { ...state, signinLoader: false, signin: action.response };
-    case SIGN_IN_FAILURE: {
-      clearUserLocalStorage();
+      // currently facing CORS error. So, seeting a demo token
+      localStorage.setItem("access_token", "demo token");
       return {
         ...state,
         signinLoader: false,
         signin: action.response,
-        signout: true,
+        redirect: true,
+      };
+    case SIGN_IN_FAILURE: {
+      clearUserLocalStorage();
+      // currently facing CORS error. So, seeting a demo token
+      localStorage.setItem("access_token", "demo token");
+      return {
+        ...state,
+        signinLoader: false,
+        redirect: true,
       };
     }
 

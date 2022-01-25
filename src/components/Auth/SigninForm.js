@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import "./SigninForm.css";
 
@@ -6,9 +6,16 @@ const validEmailRegex = RegExp(
   /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 );
 
-function SigninForm({ userSignIn, signinLoader }) {
+function SigninForm({ userSignIn, redirect, history }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    if (redirect) {
+      history.push("/home/deals");
+    }
+  }, [redirect, history]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!email) {

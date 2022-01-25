@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { Switch } from "react-router-dom";
 import { signOut } from "../actions/index";
@@ -6,11 +6,8 @@ import Header from "../components/Common/Header";
 import routes from "../routes";
 import { ProtectedRoute } from "../utils/ProtectedRoute";
 
-function HomeLayout({ signout, userSignOut, history }) {
+function HomeLayout() {
   const getRoutes = (routes) => {
-    console.log(
-      routes.filter((prop) => prop.layout === "/home").map((prop, key) => prop)
-    );
     return routes
       .filter((prop) => prop.layout === "/home")
       .map((prop, key) => {
@@ -23,14 +20,6 @@ function HomeLayout({ signout, userSignOut, history }) {
         );
       });
   };
-
-  useEffect(() => {
-    const token = localStorage.getItem("access_token");
-    if (signout && token) {
-      userSignOut();
-      history.push("/auth/sign-in");
-    }
-  }, [signout, history, userSignOut]);
 
   return (
     <>

@@ -6,6 +6,7 @@ const mapStateToProps = (state) => {
   return {
     signin: state.auth.signin,
     signinLoader: state.auth.signinLoader,
+    redirect: state.auth.redirect,
   };
 };
 
