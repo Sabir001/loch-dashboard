@@ -4,7 +4,7 @@ import { applyMiddleware, compose, createStore } from "redux";
 import { persistStore } from "redux-persist";
 import createSagaMiddleware from "redux-saga";
 import rootReducer from "./reducers";
-import sagas from "./sagas/sagas";
+import sagas from "./sagas";
 
 const history = createBrowserHistory();
 
