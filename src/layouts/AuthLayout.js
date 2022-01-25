@@ -33,7 +33,6 @@ function AuthLayout({ history }) {
     <>
       <Header />
       <Switch>{getRoutes(routes)}</Switch>
-      <Footer />
     </>
   );
 }
