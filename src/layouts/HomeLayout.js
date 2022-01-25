@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Switch } from "react-router-dom";
 import { signOut } from "../actions/index";
+import Header from "../components/Common/Header";
 import routes from "../routes";
 import { ProtectedRoute } from "../utils/ProtectedRoute";
 
@@ -31,7 +32,12 @@ function HomeLayout({ signout, userSignOut, history }) {
     }
   }, [signout, history, userSignOut]);
 
-  return <Switch>{getRoutes(routes)}</Switch>;
+  return (
+    <>
+      <Header />
+      <Switch>{getRoutes(routes)}</Switch>
+    </>
+  );
 }
 
 const mapStateToProps = (state) => {

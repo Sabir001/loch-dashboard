@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
+import Footer from "../components/Common/Footer";
+import Header from "../components/Common/Header";
 import routes from "../routes";
 
 function AuthLayout({ history }) {
@@ -29,7 +31,9 @@ function AuthLayout({ history }) {
 
   return (
     <>
+      <Header />
       <Switch>{getRoutes(routes)}</Switch>
+      <Footer />
     </>
   );
 }
