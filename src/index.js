@@ -3,6 +3,8 @@ import { createBrowserHistory } from "history";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider, ReactReduxContext } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { PersistGate } from "redux-persist/integration/react";
 import App from "./App";
 import { persistor, store } from "./createStore";
@@ -18,6 +20,17 @@ ReactDOM.render(
         <ConnectedRouter history={hist} context={ReactReduxContext}>
           <App />
         </ConnectedRouter>
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          hideProgressBar
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnVisibilityChange
+          draggable
+          pauseOnHover
+        />
       </PersistGate>
     </Provider>
   </React.StrictMode>,
