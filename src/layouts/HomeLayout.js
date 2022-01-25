@@ -7,7 +7,7 @@ import Header from "../components/Common/Header";
 import routes from "../routes";
 import { ProtectedRoute } from "../utils/ProtectedRoute";
 
-function HomeLayout() {
+function HomeLayout({ history }) {
   const getRoutes = (routes) => {
     return routes
       .filter((prop) => prop.layout === "/home")
@@ -26,7 +26,7 @@ function HomeLayout() {
     <>
       <Header />
       <Switch>{getRoutes(routes)}</Switch>
-      <Footer />
+      <Footer history={history} />
     </>
   );
 }

@@ -31,14 +31,14 @@ function DealControl({ currentPage, setCurrentPage, filter, setFilter }) {
             Unread
           </button>
           <button
-            className={`btn ${filter === "engaged" ? "btn-primary" : ""}`}
-            onClick={() => setFilter(filter === "engaged" ? "" : "engaged")}
+            className={`btn ${filter === "engage" ? "btn-primary" : ""}`}
+            onClick={() => setFilter(filter === "engage" ? "" : "engage")}
           >
             Engaged
           </button>
           <button
-            className={`btn ${filter === "passed" ? "btn-primary" : ""}`}
-            onClick={() => setFilter(filter === "passed" ? "" : "passed")}
+            className={`btn ${filter === "pass" ? "btn-primary" : ""}`}
+            onClick={() => setFilter(filter === "pass" ? "" : "pass")}
           >
             Passed
           </button>

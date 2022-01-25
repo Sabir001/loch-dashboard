@@ -1,0 +1,71 @@
+.deal-card-box {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 15px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+  margin-top: 10px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.deal-card-header {
+  display: block;
+}
+
+.deal-card-header span {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.deal-card-pull-right {
+  float: right;
+}
+
+.deal-card-body {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 5px;
+}
+
+.deal-card-collapsed-body {
+  display: flex;
+}
+
+.deal-card-collapsed-body-parts {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+
+.deal-card-collapsed-body-parts span {
+  font-size: 13px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+}
+
+.deal-card-name {
+  color: #3880ff;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.deal-card-footer {
+  display: flex;
+}
+
+.deal-card-footer button {
+  font-size: 16px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.engage-button {
+  color: #2dd36f;
+}
+
+.pass-button {
+  color: #eb445a;
+}
