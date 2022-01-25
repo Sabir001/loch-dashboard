@@ -1,0 +1,40 @@
+.deals-section {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.deals-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-text {
+  font-weight: 500;
+}
+
+.button-group {
+  display: flex;
+}
+
+.btn {
+  display: inline-block;
+  background-color: #f5f6f9;
+  border: none;
+  color: #353535;
+  font-size: 12px;
+  font-weight: 500;
+  margin-right: 4px;
+  margin-left: 4px;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #4c8cff;
+}
+
+.btn-sent {
+  margin-right: 32px;
+}

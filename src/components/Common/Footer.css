@@ -16,8 +16,9 @@
   justify-content: center;
 }
 
-.footer-button button {
+.footer-button .btn-footer {
   width: 240px;
   border: none;
   background-color: transparent;
+  color: #353535;
 }

@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Switch } from "react-router-dom";
 import { signOut } from "../actions/index";
+import Footer from "../components/Common/Footer";
 import Header from "../components/Common/Header";
 import routes from "../routes";
 import { ProtectedRoute } from "../utils/ProtectedRoute";
@@ -25,6 +26,7 @@ function HomeLayout() {
     <>
       <Header />
       <Switch>{getRoutes(routes)}</Switch>
+      <Footer />
     </>
   );
 }

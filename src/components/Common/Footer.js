@@ -6,13 +6,13 @@ function Footer() {
     <footer className="footer">
       <div className="footer-button-group">
         <div className="footer-button">
-          <button>Sign Out</button>
+          <button className="btn-footer">Sign Out</button>
         </div>
         <div className="footer-button">
-          <button>Create Deal</button>
+          <button className="btn-footer">Create Deal</button>
         </div>
         <div className="footer-button">
-          <button>Deals</button>
+          <button className="btn-footer">Deals</button>
         </div>
       </div>
     </footer>
