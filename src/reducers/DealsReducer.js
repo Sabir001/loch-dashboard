@@ -1,29 +1,26 @@
 import {
-  DECREMENT_COUNTER,
-  INCREMENT_COUNTER,
-  SUCCESS,
-  FAILURE,
+  FETCH_RECEIVED_DEALS,
+  FETCH_RECEIVED_DEALS_SUCCESS,
+  FETCH_RECEIVED_DEALS_FAILURE,
 } from "../actions/DealsAction";
 
 import { SIGNED_OUT } from "../actions/index";
 
 const initialState = {
-  counter: 0,
-  todos: undefined,
+  receivedDeals: undefined,
+  loader: false,
 };
 
-export default function todoReducer(state = initialState, action) {
+export default function dealsReducer(state = initialState, action) {
   switch (action.type) {
-    case INCREMENT_COUNTER:
-      return { ...state, counter: state.counter + action.incrementValue };
-    case DECREMENT_COUNTER:
-      return { ...state, counter: state.counter - action.decrementValue };
-    case SUCCESS: {
-      return { ...state, todos: action?.response?.data };
+    case FETCH_RECEIVED_DEALS:
+      return { ...state, loader: true };
+    case FETCH_RECEIVED_DEALS_SUCCESS:
+      return { ...state, receivedDeals: action.response, loader: false };
+    case FETCH_RECEIVED_DEALS_FAILURE: {
+      return { ...state, receivedDeals: undefined, loader: false };
     }
-    case FAILURE: {
-      return { ...state, todos: undefined };
-    }
+
     case SIGNED_OUT:
       return { ...initialState };
     default:

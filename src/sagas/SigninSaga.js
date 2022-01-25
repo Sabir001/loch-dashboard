@@ -3,8 +3,8 @@ import {
   SIGN_IN,
   SIGN_IN_SUCCESS,
   SIGN_IN_FAILURE,
-} from "../actions/SigninActions";
-import { defaultApi } from "../utils/axiosApi";
+} from "../actions/SigninAction";
+import { defaultApi } from "../utils/AxiosApi";
 
 export function* invokeSigninApi({ credential }) {
   const endpoint = `${process.env.REACT_APP_API_BASE_URL}/auth/login`;

@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Deals from "../components/Deal";
-import { fetchUser } from "../actions/DealsAction";
+import { fetchReceivedDeals } from "../actions/DealsAction";
 
 const mapStateToProps = (state) => {
   return {
@@ -10,7 +10,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchUser: (value) => dispatch(fetchUser(value)),
+    fetchReceivedDeals: () => dispatch(fetchReceivedDeals()),
   };
 };
 
